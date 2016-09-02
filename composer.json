@@ -1,0 +1,34 @@
+{
+    "name": "dhii/collections-abstract-base",
+    "description": "Collection base classes that do not depend on other non-collection packages, on which there is a dependency of other collection packages that depend on this package. This is done to avoid circular reference in the collection toolchain",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Dhii Team",
+            "email": "development@dhii.co"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "dhii/collections-interface": "dev-master"
+    },
+    "require-dev": {
+        "dhii/php-cs-fixer-config": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "Dhii\\Collections\\": "src/"
+        }
+    },
+    "repositories": [
+        {
+            "url": "https://github.com/Dhii/php-cs-fixer-config.git",
+            "type": "git"
+        },
+        {
+            "url": "https://github.com/Dhii/collections-interface.git",
+            "type": "git"
+        }
+    ]
+}
