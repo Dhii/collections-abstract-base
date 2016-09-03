@@ -123,7 +123,11 @@ abstract class AbstractCollection extends AbstractHasher implements CollectionIn
     {
         $key = $this->_getItemKey($item);
 
-        return $this->_arrayKeyExists($this->items, $key);
+        if ($this->_arrayKeyExists($this->items, $key)) {
+            return true;
+        }
+
+        return array_search($item, $this->items) !== false;
     }
 
     /**
