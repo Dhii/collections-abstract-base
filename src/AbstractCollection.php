@@ -106,6 +106,13 @@ abstract class AbstractCollection extends AbstractHasher implements CollectionIn
     protected function _removeItem($item)
     {
         $key = $this->_getItemKey($item);
+        if (!$this->_hasItemKey($key)) {
+            $key = $this->_arraySearch($this->items, $item, true);
+        }
+
+        if ($key === false) {
+            return false;
+        }
 
         return $this->_arrayUnset($this->items, $key);
     }
