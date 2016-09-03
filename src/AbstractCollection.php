@@ -175,10 +175,10 @@ abstract class AbstractCollection extends AbstractHasher implements CollectionIn
 
     /**
      * Get a collection-wide unique key for an item.
-     * 
+     *
      * It is not guaranteed to be consistent, e.g. running this several
      * times on the same argument will likely produce different results.
-     * 
+     *
      * @param mixed $item The item, for which to get the key.
      *
      * @return string|int A key that is guaranteed to be different from all other keys in this collection.
