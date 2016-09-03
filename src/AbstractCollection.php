@@ -309,7 +309,7 @@ abstract class AbstractCollection extends AbstractHasher implements CollectionIn
                 return true;
             }
 
-            false;
+            return false;
         }
 
         if ($array instanceof \ArrayAccess) {
