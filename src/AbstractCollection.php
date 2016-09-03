@@ -72,7 +72,7 @@ abstract class AbstractCollection extends AbstractHasher implements CollectionIn
      */
     protected function _setItem($key, $item)
     {
-        return $this->_arraySet($this->items, $key, $key);
+        return $this->_arraySet($this->items, $item, $key);
     }
 
     /**
