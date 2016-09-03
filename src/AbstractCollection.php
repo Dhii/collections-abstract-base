@@ -156,7 +156,7 @@ abstract class AbstractCollection extends AbstractHasher implements CollectionIn
      */
     protected function _getItem($key, $default = null)
     {
-        return $this->_arrayGet($this->_getCachedItems(), $key);
+        return $this->_arrayGet($this->items, $key);
     }
 
     /**
