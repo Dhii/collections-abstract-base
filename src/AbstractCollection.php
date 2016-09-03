@@ -110,10 +110,6 @@ abstract class AbstractCollection extends AbstractHasher implements CollectionIn
             $key = $this->_arraySearch($this->items, $item, true);
         }
 
-        if ($key === false) {
-            return false;
-        }
-
         return $this->_arrayUnset($this->items, $key);
     }
 
