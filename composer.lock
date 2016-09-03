@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "a73958d506990fc53be5fbe0de71f9a4",
+    "hash": "ee742ea96afda343e29d9663dbe15927",
     "content-hash": "d4b620d61f00204539a90255eb5d0566",
     "packages": [
         {
@@ -13,7 +13,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Dhii/collections-interface.git",
-                "reference": "b4b9daf92ecf7cecc47bfcc963799dfb9e25e412"
+                "reference": "55a10ffeb913405f56289ff134bfcc70b0fb803f"
             },
             "require-dev": {
                 "dhii/php-cs-fixer-config": "dev-master"
@@ -21,7 +21,7 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Dhii\\Collections\\": "src/"
+                    "Dhii\\Collection\\": "src/"
                 }
             },
             "license": [
@@ -34,7 +34,7 @@
                 }
             ],
             "description": "Interfaces for collections",
-            "time": "2016-09-02 14:07:55"
+            "time": "2016-09-03 07:06:19"
         }
     ],
     "packages-dev": [
