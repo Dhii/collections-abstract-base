@@ -127,7 +127,7 @@ abstract class AbstractCollection extends AbstractHasher implements CollectionIn
             return true;
         }
 
-        return array_search($item, $this->items) !== false;
+        return $this->_arraySearch($this->items, $item, true) !== false;
     }
 
     /**
@@ -328,6 +328,41 @@ abstract class AbstractCollection extends AbstractHasher implements CollectionIn
 
         throw new RuntimeException(sprintf(
             'Could not unset list item for key "%1$s": the list is not something that can have an item unset', $key));
+    }
+
+    /**
+     * Searches a list for a value.
+     *
+     * @since [*next-version*]
+     * @see array_search()
+     *
+     * @param mixed[]\Traversable $array The list to search.
+     * @param mixed $value The value to search for.
+     * @param bool $isStrict If true, compares types as well as values.
+     * @return boolean|int|string The key for the value, if found;
+     *  otherwise, false.
+     * @throws RuntimeException If list is not searchable.
+     */
+    public function _arraySearch(&$array, $value, $isStrict = true)
+    {
+        if (is_array($array)) {
+            return array_search($value, $array, $isStrict);
+        }
+
+        if ($array instanceof \Traversable) {
+            foreach ($array as $_index => $_value) {
+                $isMatch = $isStrict
+                        ? $_value === $value
+                        : $_value == $value;
+                if ($isMatch) {
+                    return $_index;
+                }
+            }
+
+            return false;
+        }
+
+        throw new RuntimeException('Could not search list: the list is not something that can be searched');
     }
 
     /**
