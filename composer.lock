@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "93c09468d81948defe174817f140c441",
-    "content-hash": "c8b4778a72da516db6e96761c01cec1c",
+    "hash": "77da6e9815e653a86acd463812767427",
+    "content-hash": "512d85d0869e086c35c19b1c8b0f71b7",
     "packages": [
         {
             "name": "dhii/collections-interface",
@@ -14,6 +14,12 @@
                 "type": "git",
                 "url": "https://github.com/Dhii/collections-interface.git",
                 "reference": "d023f8e2150dc25ad3d514be5c70a184f63d6451"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Dhii/collections-interface/zipball/d023f8e2150dc25ad3d514be5c70a184f63d6451",
+                "reference": "d023f8e2150dc25ad3d514be5c70a184f63d6451",
+                "shasum": ""
             },
             "require": {
                 "php": "^5.3 | ^7.0"
@@ -29,12 +35,7 @@
                     "Dhii\\Collection\\": "src/"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "Dhii\\Collection\\UnitTest\\": "test/unit",
-                    "Dhii\\Collection\\FuncTest\\": "test/functional"
-                }
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -57,6 +58,12 @@
                 "url": "https://github.com/Dhii/php-cs-fixer-config.git",
                 "reference": "ee3cc6c906a1aa4dca2bcbfcfef684dbd1ebb8ca"
             },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Dhii/php-cs-fixer-config/zipball/ee3cc6c906a1aa4dca2bcbfcfef684dbd1ebb8ca",
+                "reference": "ee3cc6c906a1aa4dca2bcbfcfef684dbd1ebb8ca",
+                "shasum": ""
+            },
             "require": {
                 "friendsofphp/php-cs-fixer": ">=1.11 <1.12",
                 "php": "^5.3 | ^7.0"
@@ -70,11 +77,7 @@
                     "Dhii\\Configuration\\PHPCSFixer\\": "src/"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "Dhii\\Configuration\\PHPCSFixer\\UnitTest\\": "test/unit"
-                }
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
