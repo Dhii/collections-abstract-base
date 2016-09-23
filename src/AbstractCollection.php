@@ -198,11 +198,11 @@ abstract class AbstractCollection extends AbstractHasher implements CollectionIn
      *
      * @since [*next-version*]
      *
-     * @param mixed $item The item to find.
-     * @param bool $strict Whether or not the type must also match.
+     * @param mixed $item   The item to find.
+     * @param bool  $strict Whether or not the type must also match.
      *
      * @return int|string|false The key, at which the item exists in this collection, if found;
-     *  false otherwise.
+     *                          false otherwise.
      */
     public function _findItem($item, $strict = false)
     {
@@ -229,12 +229,12 @@ abstract class AbstractCollection extends AbstractHasher implements CollectionIn
      *
      * @since [*next-version*]
      *
-     * @param AbstractCollection|array|\Traversable $array The list to search.
-     * @param mixed $value The value to search for.
-     * @param bool $strict Whether the type must also match.
+     * @param AbstractCollection|array|\Traversable $array  The list to search.
+     * @param mixed                                 $value  The value to search for.
+     * @param bool                                  $strict Whether the type must also match.
      *
      * @return int|string|bool The key, at which the value exists in the list, if found;
-     *  false otherwise.
+     *                         false otherwise.
      */
     protected function _arraySearch(&$array, $value, $strict = false)
     {
@@ -243,7 +243,7 @@ abstract class AbstractCollection extends AbstractHasher implements CollectionIn
             return array_search($value, $array, $strict);
         }
         // Using familiar interface
-        if ($array instanceof AbstractCollection) {
+        if ($array instanceof self) {
             return $array->_findItem($value, $strict);
         }
         // Last resort - iterate and compare
