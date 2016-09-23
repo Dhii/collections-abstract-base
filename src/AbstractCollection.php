@@ -183,6 +183,47 @@ abstract class AbstractCollection extends AbstractHasher implements CollectionIn
     {
         return count($this->items);
     }
+
+    /**
+     * Search a list for a value.
+     *
+     * @since [*next-version*]
+     *
+     * @param AbstractCollection|array|\Traversable $array The list to search.
+     * @param mixed $value The value to search for.
+     * @param bool $strict Whether the type must also match.
+     *
+     * @return int|string|bool The key, at which the value exists in the list, if found;
+     *  false otherwise.
+     */
+    protected function _arraySearch(&$array, $value, $strict = false)
+    {
+        // Regular array matching
+        if (is_array($array)) {
+            return array_search($value, $array, $strict);
+        }
+        // Using familiar interface
+        if ($array instanceof AbstractCollection) {
+            return $array->_findItem($value, $strict);
+        }
+        // Last resort - iterate and compare
+        if ($array instanceof \Traversable) {
+            foreach ($array as $_idx => $_value) {
+                if ($strict && $value === $_value) {
+                    return true;
+                }
+
+                if (!$strict && $value == $_value) {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        throw new RuntimeException('Could not search list: the list is not something that can be searched');
+    }
+
     /**
      * Checks if an item with the specified key exists in a list.
      *
