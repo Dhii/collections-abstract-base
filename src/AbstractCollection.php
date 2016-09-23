@@ -15,7 +15,19 @@ use UnexpectedValueException;
  */
 abstract class AbstractCollection extends AbstractHasher implements CollectionInterface
 {
-    protected $items = array();
+    protected $items;
+
+    /**
+     * Parameter-less constructor.
+     *
+     * The actual constructor MUST call this method.
+     *
+     * @since [*next-version*]
+     */
+    protected function _construct()
+    {
+        $this->items = array();
+    }
 
     /**
      * {@inheritdoc}
