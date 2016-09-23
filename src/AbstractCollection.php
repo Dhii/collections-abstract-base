@@ -9,6 +9,8 @@ use UnexpectedValueException;
 /**
  * Common functionality for collections.
  *
+ * This implementation permits the same value to appear multiple times.
+ *
  * @since [*next-version*]
  */
 abstract class AbstractCollection extends AbstractHasher implements CollectionInterface
@@ -121,9 +123,7 @@ abstract class AbstractCollection extends AbstractHasher implements CollectionIn
      */
     protected function _hasItem($item)
     {
-        $key = $this->_getItemKey($item);
-
-        return $this->_arrayKeyExists($this->items, $key);
+        return $this->_findItem($item, true) !== false;
     }
 
     /**
