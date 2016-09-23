@@ -24,6 +24,18 @@ abstract class AbstractCollection extends AbstractHasher implements CollectionIn
      */
     public function getItems()
     {
+        return $this->_getItems();
+    }
+
+    /**
+     * Low-level retrieval of all items.
+     *
+     * @since [*next-version*]
+     *
+     * @return mixed[]|\Traversable
+     */
+    protected function _getItems()
+    {
         return $this->items;
     }
 
