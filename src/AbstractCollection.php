@@ -170,6 +170,22 @@ abstract class AbstractCollection extends AbstractHasher implements CollectionIn
     }
 
     /**
+     * Get the index, at which an item exists in this collection.
+     *
+     * @since [*next-version*]
+     *
+     * @param mixed $item The item to find.
+     * @param bool $strict Whether or not the type must also match.
+     *
+     * @return int|string|false The key, at which the item exists in this collection, if found;
+     *  false otherwise.
+     */
+    public function _findItem($item, $strict = false)
+    {
+        return $this->_arraySearch($this->items, $item, $strict);
+    }
+
+    /**
      * Get a collection-wide unique key for an item.
      *
      * It is not guaranteed to be consistent, e.g. running this several
