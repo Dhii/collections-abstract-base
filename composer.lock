@@ -13,12 +13,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Dhii/collections-interface.git",
-                "reference": "d023f8e2150dc25ad3d514be5c70a184f63d6451"
+                "reference": "70429dd43f8e8936690626925a41c38365f23fa6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Dhii/collections-interface/zipball/d023f8e2150dc25ad3d514be5c70a184f63d6451",
-                "reference": "d023f8e2150dc25ad3d514be5c70a184f63d6451",
+                "url": "https://api.github.com/repos/Dhii/collections-interface/zipball/70429dd43f8e8936690626925a41c38365f23fa6",
+                "reference": "70429dd43f8e8936690626925a41c38365f23fa6",
                 "shasum": ""
             },
             "require": {
@@ -46,7 +46,7 @@
                 }
             ],
             "description": "Interfaces for collections",
-            "time": "2016-09-03 14:02:49"
+            "time": "2016-09-24 12:14:37"
         }
     ],
     "packages-dev": [
@@ -1142,12 +1142,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "b5fe20d60be1d9876f31228fcfff742b794806ad"
+                "reference": "221734a91f2426a6f93344031433794b8360d943"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/b5fe20d60be1d9876f31228fcfff742b794806ad",
-                "reference": "b5fe20d60be1d9876f31228fcfff742b794806ad",
+                "url": "https://api.github.com/repos/symfony/console/zipball/221734a91f2426a6f93344031433794b8360d943",
+                "reference": "221734a91f2426a6f93344031433794b8360d943",
                 "shasum": ""
             },
             "require": {
@@ -1195,7 +1195,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2016-09-19 20:28:05"
+            "time": "2016-09-24 09:47:20"
         },
         {
             "name": "symfony/debug",
