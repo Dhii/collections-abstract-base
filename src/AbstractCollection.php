@@ -9,11 +9,25 @@ use UnexpectedValueException;
 /**
  * Common functionality for collections.
  *
+ * This implementation permits the same value to appear multiple times.
+ *
  * @since [*next-version*]
  */
 abstract class AbstractCollection extends AbstractHasher implements CollectionInterface
 {
-    protected $items = array();
+    protected $items;
+
+    /**
+     * Parameter-less constructor.
+     *
+     * The actual constructor MUST call this method.
+     *
+     * @since [*next-version*]
+     */
+    protected function _construct()
+    {
+        $this->items = array();
+    }
 
     /**
      * {@inheritdoc}
@@ -21,6 +35,18 @@ abstract class AbstractCollection extends AbstractHasher implements CollectionIn
      * @since [*next-version*]
      */
     public function getItems()
+    {
+        return $this->_getItems();
+    }
+
+    /**
+     * Low-level retrieval of all items.
+     *
+     * @since [*next-version*]
+     *
+     * @return mixed[]|\Traversable
+     */
+    protected function _getItems()
     {
         return $this->items;
     }
@@ -105,12 +131,11 @@ abstract class AbstractCollection extends AbstractHasher implements CollectionIn
      */
     protected function _removeItem($item)
     {
-        $key = $this->_getItemKey($item);
-        if (!$this->_hasItemKey($key)) {
-            $key = $this->_arraySearch($this->items, $item, true);
+        if (($key = $this->_findItem($item, true)) !== false) {
+            return $this->_arrayUnset($this->items, $key);
         }
 
-        return $this->_arrayUnset($this->items, $key);
+        return false;
     }
 
     /**
@@ -124,13 +149,7 @@ abstract class AbstractCollection extends AbstractHasher implements CollectionIn
      */
     protected function _hasItem($item)
     {
-        $key = $this->_getItemKey($item);
-
-        if ($this->_arrayKeyExists($this->items, $key)) {
-            return true;
-        }
-
-        return $this->_arraySearch($this->items, $item, true) !== false;
+        return $this->_findItem($item, true) !== false;
     }
 
     /**
@@ -177,6 +196,22 @@ abstract class AbstractCollection extends AbstractHasher implements CollectionIn
     }
 
     /**
+     * Get the index, at which an item exists in this collection.
+     *
+     * @since [*next-version*]
+     *
+     * @param mixed $item   The item to find.
+     * @param bool  $strict Whether or not the type must also match.
+     *
+     * @return int|string|false The key, at which the item exists in this collection, if found;
+     *                          false otherwise.
+     */
+    public function _findItem($item, $strict = false)
+    {
+        return $this->_arraySearch($this->items, $item, $strict);
+    }
+
+    /**
      * Get a collection-wide unique key for an item.
      *
      * It is not guaranteed to be consistent, e.g. running this several
@@ -190,6 +225,47 @@ abstract class AbstractCollection extends AbstractHasher implements CollectionIn
     {
         return count($this->items);
     }
+
+    /**
+     * Search a list for a value.
+     *
+     * @since [*next-version*]
+     *
+     * @param AbstractCollection|array|\Traversable $array  The list to search.
+     * @param mixed                                 $value  The value to search for.
+     * @param bool                                  $strict Whether the type must also match.
+     *
+     * @return int|string|bool The key, at which the value exists in the list, if found;
+     *                         false otherwise.
+     */
+    protected function _arraySearch(&$array, $value, $strict = false)
+    {
+        // Regular array matching
+        if (is_array($array)) {
+            return array_search($value, $array, $strict);
+        }
+        // Using familiar interface
+        if ($array instanceof self) {
+            return $array->_findItem($value, $strict);
+        }
+        // Last resort - iterate and compare
+        if ($array instanceof \Traversable) {
+            foreach ($array as $_idx => $_value) {
+                if ($strict && $value === $_value) {
+                    return true;
+                }
+
+                if (!$strict && $value == $_value) {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        throw new RuntimeException('Could not search list: the list is not something that can be searched');
+    }
+
     /**
      * Checks if an item with the specified key exists in a list.
      *
@@ -331,41 +407,6 @@ abstract class AbstractCollection extends AbstractHasher implements CollectionIn
 
         throw new RuntimeException(sprintf(
             'Could not unset list item for key "%1$s": the list is not something that can have an item unset', $key));
-    }
-
-    /**
-     * Searches a list for a value.
-     *
-     * @since [*next-version*]
-     * @see array_search()
-     *
-     * @param mixed[]\Traversable $array The list to search.
-     * @param mixed $value The value to search for.
-     * @param bool $isStrict If true, compares types as well as values.
-     * @return boolean|int|string The key for the value, if found;
-     *  otherwise, false.
-     * @throws RuntimeException If list is not searchable.
-     */
-    public function _arraySearch(&$array, $value, $isStrict = true)
-    {
-        if (is_array($array)) {
-            return array_search($value, $array, $isStrict);
-        }
-
-        if ($array instanceof \Traversable) {
-            foreach ($array as $_index => $_value) {
-                $isMatch = $isStrict
-                        ? $_value === $value
-                        : $_value == $value;
-                if ($isMatch) {
-                    return $_index;
-                }
-            }
-
-            return false;
-        }
-
-        throw new RuntimeException('Could not search list: the list is not something that can be searched');
     }
 
     /**
