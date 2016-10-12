@@ -4,21 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "7518652d0e753cd30008c421e7abb70a",
-    "content-hash": "57f40dd3bf27a2517d52353d265d2352",
+    "hash": "1faa69d3db80fd57b907446581bfd263",
+    "content-hash": "04c6293caab3815f563353fa0d8ec2f2",
     "packages": [
         {
             "name": "dhii/collections-interface",
-            "version": "dev-master",
+            "version": "dev-develop",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Dhii/collections-interface.git",
-                "reference": "65a5fd89ec5605fa57d2feb3e9cee885887f0313"
+                "reference": "c3723f39cdb701dee65f02f3d632e4486d9a515a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Dhii/collections-interface/zipball/65a5fd89ec5605fa57d2feb3e9cee885887f0313",
-                "reference": "65a5fd89ec5605fa57d2feb3e9cee885887f0313",
+                "url": "https://api.github.com/repos/Dhii/collections-interface/zipball/c3723f39cdb701dee65f02f3d632e4486d9a515a",
+                "reference": "c3723f39cdb701dee65f02f3d632e4486d9a515a",
                 "shasum": ""
             },
             "require": {
@@ -46,7 +46,7 @@
                 }
             ],
             "description": "Interfaces for collections",
-            "time": "2016-10-11 18:00:09"
+            "time": "2016-09-30 16:19:20"
         }
     ],
     "packages-dev": [
