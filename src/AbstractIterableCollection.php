@@ -25,6 +25,16 @@ abstract class AbstractIterableCollection extends AbstractCollection implements 
      */
     public function current()
     {
+        return $this->_current();
+    }
+
+    /**
+     * Retrieves the current element in the iteration.
+     *
+     * @since [*next-version*]
+     */
+    protected function _current()
+    {
         return $this->_arrayCurrent($this->_getCachedItems());
     }
 
@@ -34,6 +44,16 @@ abstract class AbstractIterableCollection extends AbstractCollection implements 
      * @since [*next-version*]
      */
     public function key()
+    {
+        return $this->_key();
+    }
+
+    /**
+     * Retrieves the key of the current element in the iteration.
+     *
+     * @since [*next-version*]
+     */
+    protected function _key()
     {
         return $this->_arrayKey($this->_getCachedItems());
     }
@@ -45,6 +65,16 @@ abstract class AbstractIterableCollection extends AbstractCollection implements 
      */
     public function next()
     {
+        $this->_next();
+    }
+
+    /**
+     * Advances the internal iteration pointer forward.
+     *
+     * @since [*next-version*]
+     */
+    protected function _next()
+    {
         $this->_arrayNext($this->_getCachedItems());
     }
 
@@ -54,6 +84,16 @@ abstract class AbstractIterableCollection extends AbstractCollection implements 
      * @since [*next-version*]
      */
     public function rewind()
+    {
+        $this->_rewind();
+    }
+
+    /**
+     * Returns the internal iteration pointer to the beginning.
+     *
+     * @since [*next-version*]
+     */
+    protected function _rewind()
     {
         $this->_clearItemCache();
     }
