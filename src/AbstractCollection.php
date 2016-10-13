@@ -252,11 +252,11 @@ abstract class AbstractCollection extends AbstractHasher implements CollectionIn
         if ($array instanceof \Traversable) {
             foreach ($array as $_idx => $_value) {
                 if ($strict && $value === $_value) {
-                    return true;
+                    return $_idx;
                 }
 
                 if (!$strict && $value == $_value) {
-                    return true;
+                    return $_idx;
                 }
             }
 
