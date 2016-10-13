@@ -410,6 +410,39 @@ abstract class AbstractCollection extends AbstractHasher implements CollectionIn
     }
 
     /**
+     * Normalize an array-ish value to array.
+     *
+     * @since [*next-version*]
+     *
+     * @param array|AbstractCollection|\Traversable $list The list, which to convert.
+     *
+     * @throws RuntimeException If list is not something that can have a value unset.
+     *
+     * @return array The array that resulted from the conversion.
+     *  If the argument is an array, returns unmodified.
+     *  If it is an {@see AbstractCollection} and not a {@see \Traversable}, gets its internal items and tries to convert those to array.
+     *  If it is a {@see \Traversable}, returns the result of {@see iterator_to_array()} on that.
+     */
+    protected function _arrayConvert(&$list)
+    {
+        if (is_array($list)) {
+            return $list;
+        }
+
+        if ($list instanceof self && !($list instanceof \Traversable)) {
+            $items = $list->_getItems();
+            return $this->_arrayConvert($items);
+        }
+
+        if ($list instanceof \Traversable) {
+            return iterator_to_array($list, true);
+        }
+
+        throw new RuntimeException(sprintf(
+            'Could not convert to array: not something that can be converted'));
+    }
+
+    /**
      * Determines if item is a valid member of the collection.
      *
      * @since [*next-version*]
