@@ -11,15 +11,6 @@ namespace Dhii\Collection;
  */
 abstract class AbstractIteratorCollection extends AbstractIterableCollection
 {
-    /**
-     * @inheritdoc
-     *
-     * @since [*next-version*]
-     */
-    public function getIterators()
-    {
-        return $this->_getIterators();
-    }
 
     /**
      * @see SequentialIteratorInterface::getIterators()
@@ -32,16 +23,6 @@ abstract class AbstractIteratorCollection extends AbstractIterableCollection
     }
 
     /**
-     * @inheritdoc
-     *
-     * @since [*next-version*]
-     */
-    public function getIteratorIndex()
-    {
-        return $this->_getIteratorIndex();
-    }
-
-    /**
      * Gets the current iterator index.
      *
      * @since [*next-version*]
@@ -51,16 +32,6 @@ abstract class AbstractIteratorCollection extends AbstractIterableCollection
     protected function _getIteratorIndex()
     {
         return $this->_key();
-    }
-
-    /**
-     * @inheritdoc
-     *
-     * @since [*next-version*]
-     */
-    public function getInnerIterator()
-    {
-        return $this->_getInnerIterator();
     }
 
     /**
