@@ -5,11 +5,11 @@ namespace Dhii\Collection\FuncTest;
 use Dhii\Collection;
 
 /**
- * Tests {@see Collection\AbstractCollection}.
+ * Tests {@see Collection\AbstractRemovalCapableCollection}.
  *
  * @since [*next-version*]
  */
-class AbstractCollectionTest extends \Xpmock\TestCase
+class AbstractRemovalCapableCollectionTest extends \Xpmock\TestCase
 {
     /**
      * Creates an instance of the test subject.
@@ -20,7 +20,7 @@ class AbstractCollectionTest extends \Xpmock\TestCase
      */
     public function createInstance()
     {
-        $mock = $this->mock('Dhii\\Collection\\AbstractCollection')
+        $mock = $this->mock('Dhii\\Collection\\AbstractRemovalCapableCollection')
                 ->new();
 
         $reflection = $this->reflect($mock);
@@ -38,7 +38,7 @@ class AbstractCollectionTest extends \Xpmock\TestCase
     {
         $subject = $this->createInstance();
 
-        $this->assertInstanceOf('Dhii\\Collection\\AbstractCollection', $subject, 'Subject instance is not valid');
+        $this->assertInstanceOf('Dhii\\Collection\\AbstractRemovalCapableCollection', $subject, 'Subject instance is not valid');
     }
 
     /**
@@ -46,14 +46,16 @@ class AbstractCollectionTest extends \Xpmock\TestCase
      *
      * @since [*next-version*]
      */
-    public function testHasItem()
+    public function testRemoveOne()
     {
         $subject = $this->createInstance();
         $reflection = $this->reflect($subject);
 
-        $reflection->items = array('banana');
-        $this->assertTrue($reflection->_hasItem('banana'), 'Subject reported existance of non-existing item');
-        $this->assertFalse($reflection->_hasItem('orange'), 'Subject did not report existance of existing item');
+        $data = array('banana', 'orange');
+        $reflection->items = $data;
+        $this->assertEquals($data, $reflection->_getItems(), 'Subject did not report correct items before removal');
+        $reflection->_removeItem('banana');
+        $this->assertEquals(array('orange'), array_values($reflection->_getItems()), 'Subject did not report correct items after removal');
         
     }
 }

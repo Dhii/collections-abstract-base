@@ -52,37 +52,11 @@ abstract class AbstractIteratorCollection extends AbstractIterableCollection
     protected function _validateItem($item)
     {
         if (!($item instanceof \Iterator)) {
-            throw new Exception(sprintf('Not a valid iterator group item'));
+            throw $this->_createRuntimeException(sprintf('Not a valid iterator group item'));
         }
     }
-
-    /**
-     * @inheritdoc
-     *
-     * @since [*next-version*]
-     */
-    public function current()
-    {
-        $iterator = $this->_current();
-        return $iterator->current();
-    }
-
-    /**
-     * @inheritdoc
-     *
-     * @since [*next-version*]
-     */
-    public function valid()
-    {
-        return parent::valid() && $this->_current()->valid();
-    }
-
-    /**
-     * @inheritdoc
-     *
-     * @since [*next-version*]
-     */
-    public function next()
+    
+    protected function _nextInnerItem()
     {
         // Advance in the current iterator
         $iterator = $this->_current();
@@ -97,5 +71,24 @@ abstract class AbstractIteratorCollection extends AbstractIterableCollection
         if ($this->valid() && ($iterator = $this->_current()) instanceof \Iterable) {
             $iterator->rewind();
         }
+    }
+    
+    protected function _currentInnerItem()
+    {
+        $iterator = $this->_current();
+        
+        return $iterator->current();
+    }
+    
+    protected function _validInnerItem()
+    {
+        return parent::valid() && $this->_current()->valid();
+    }
+    
+    protected function _keyInnerItem()
+    {
+        $iterator = $this->_current();
+        
+        return $iterator->key();
     }
 }

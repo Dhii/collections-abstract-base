@@ -7,27 +7,16 @@ use UnexpectedValueException;
 
 /**
  * Common functionality for collections that can be iterated over in a foreach loop.
+ * 
+ * Provides functionality necessary for implementation of {@see TraversableCollectionInterface}.
  *
  * Caches items on rewind, allowing convenient auto-generation of items,
  * while still having performance in the loop.
  *
  * @since [*next-version*]
  */
-abstract class AbstractIterableCollection extends AbstractCollection implements \Iterator
+abstract class AbstractTraversableCollection extends AbstractCheckCapableCollection
 {
-    protected $itemIndex   = 0;
-    protected $cachedItems = null;
-
-    /**
-     * {@inheritdoc}
-     *
-     * @since [*next-version*]
-     */
-    public function current()
-    {
-        return $this->_current();
-    }
-
     /**
      * Retrieves the current element in the iteration.
      *
@@ -36,16 +25,6 @@ abstract class AbstractIterableCollection extends AbstractCollection implements 
     protected function _current()
     {
         return $this->_arrayCurrent($this->_getCachedItems());
-    }
-
-    /**
-     * {@inheritdoc}
-     *
-     * @since [*next-version*]
-     */
-    public function key()
-    {
-        return $this->_key();
     }
 
     /**
@@ -59,16 +38,6 @@ abstract class AbstractIterableCollection extends AbstractCollection implements 
     }
 
     /**
-     * {@inheritdoc}
-     *
-     * @since [*next-version*]
-     */
-    public function next()
-    {
-        $this->_next();
-    }
-
-    /**
      * Advances the internal iteration pointer forward.
      *
      * @since [*next-version*]
@@ -79,57 +48,25 @@ abstract class AbstractIterableCollection extends AbstractCollection implements 
     }
 
     /**
-     * {@inheritdoc}
-     *
-     * @since [*next-version*]
-     */
-    public function rewind()
-    {
-        $this->_rewind();
-    }
-
-    /**
      * Returns the internal iteration pointer to the beginning.
      *
      * @since [*next-version*]
      */
     protected function _rewind()
     {
-        $this->_clearItemCache();
+        $this->_arrayRewind($this->_getCachedItems());
     }
-
+    
     /**
-     * {@inheritdoc}
-     *
+     * Determines whether or not the current item is valid.
+     * 
      * @since [*next-version*]
+     * 
+     * @return bool True if the current element is valid, e.g. exists; otherwise false.
      */
-    public function valid()
+    protected function _valid()
     {
         return $this->_arrayKey($this->_getCachedItems()) !== null;
-    }
-
-    protected function _count()
-    {
-        return $this->_arrayCount($this->_getCachedItems());
-    }
-
-    /**
-     * Retrieve items that are cached for iteration.
-     *
-     * If no items are cached, populates the cache first.
-     *
-     * @since [*next-version*]
-     *
-     * @return array The array of items.
-     */
-    protected function &_getCachedItems()
-    {
-        if (is_null($this->cachedItems)) {
-            $this->cachedItems = $this->_getItemsForCache();
-            $this->_arrayRewind($this->cachedItems);
-        }
-
-        return $this->cachedItems;
     }
 
     /**
@@ -141,23 +78,10 @@ abstract class AbstractIterableCollection extends AbstractCollection implements 
      */
     protected function _getItemsForCache()
     {
-        $items = $this->getItems();
+        $items = parent::_getItemsForCache();
+        $this->_arrayRewind($items);
 
         return $items;
-    }
-
-    /**
-     * Clears and resents the iterable item cache.
-     *
-     * @since [*next-version*]
-     *
-     * @return AbstractIterableCollection This instance.
-     */
-    protected function _clearItemCache()
-    {
-        $this->cachedItems = null;
-
-        return $this;
     }
 
     /**
@@ -225,40 +149,6 @@ abstract class AbstractIterableCollection extends AbstractCollection implements 
     }
 
     /**
-     * Get the amount of all elements in the given list.
-     *
-     * @since [*next-version*]
-     *
-     * @param array|\Countable|\Traversable $array The list to get the count of
-     *
-     * @throws RuntimeException If the given list is not something that can be counted.
-     *
-     * @return int The number of items in the list.
-     */
-    public function _arrayCount(&$list)
-    {
-        if (is_array($list)) {
-            return count($list);
-        }
-
-        if ($list instanceof \Countable) {
-            return $list->count();
-        }
-
-        if ($list instanceof \Traversable) {
-            $count = 0;
-            $list  = $this->_getIterator($list);
-            foreach ($list as $_item) {
-                ++$count;
-            }
-
-            return $count;
-        }
-
-        throw new RuntimeException(sprintf('Could not count elements: the given list is not someting that can be counted'));
-    }
-
-    /**
      * Retrieve the bottom-most iterator of this iterator.
      *
      * If this is an iterator, gets itself.
@@ -278,7 +168,7 @@ abstract class AbstractIterableCollection extends AbstractCollection implements 
         }
 
         if (!($iterator instanceof \IteratorAggregate)) {
-            throw new UnexpectedValueException(sprintf('Could not retrieve iterator'));
+            throw $this->_createUnexpectedValueException(sprintf('Could not retrieve iterator'));
         }
 
         $this->_getIterator($iterator->getIterator());

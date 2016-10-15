@@ -4,21 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "1faa69d3db80fd57b907446581bfd263",
-    "content-hash": "04c6293caab3815f563353fa0d8ec2f2",
+    "hash": "3e4e086f202813cb0538dbb3deb35e63",
+    "content-hash": "1d41a4cc9cb01a111f3ab63b942e602e",
     "packages": [
         {
             "name": "dhii/collections-interface",
-            "version": "dev-develop",
+            "version": "dev-wip/refactoring",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Dhii/collections-interface.git",
-                "reference": "c3723f39cdb701dee65f02f3d632e4486d9a515a"
+                "reference": "49d8eea2be3269df18a4c27dfa60fc8e3880dce8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Dhii/collections-interface/zipball/c3723f39cdb701dee65f02f3d632e4486d9a515a",
-                "reference": "c3723f39cdb701dee65f02f3d632e4486d9a515a",
+                "url": "https://api.github.com/repos/Dhii/collections-interface/zipball/49d8eea2be3269df18a4c27dfa60fc8e3880dce8",
+                "reference": "49d8eea2be3269df18a4c27dfa60fc8e3880dce8",
                 "shasum": ""
             },
             "require": {
@@ -46,7 +46,7 @@
                 }
             ],
             "description": "Interfaces for collections",
-            "time": "2016-09-30 16:19:20"
+            "time": "2016-10-15 16:36:46"
         }
     ],
     "packages-dev": [
@@ -2002,7 +2002,14 @@
             "time": "2016-09-02 01:57:56"
         }
     ],
-    "aliases": [],
+    "aliases": [
+        {
+            "alias": "dev-develop",
+            "alias_normalized": "dev-develop",
+            "version": "dev-wip/refactoring",
+            "package": "dhii/collections-interface"
+        }
+    ],
     "minimum-stability": "dev",
     "stability-flags": {
         "dhii/collections-interface": 20,

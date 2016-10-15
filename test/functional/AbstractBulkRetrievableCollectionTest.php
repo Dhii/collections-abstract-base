@@ -5,11 +5,11 @@ namespace Dhii\Collection\FuncTest;
 use Dhii\Collection;
 
 /**
- * Tests {@see Collection\AbstractCollection}.
+ * Tests {@see Collection\AbstractBulkRetrievableCollection}.
  *
  * @since [*next-version*]
  */
-class AbstractCollectionTest extends \Xpmock\TestCase
+class AbstractBulkRetrievableCollectionTest extends \Xpmock\TestCase
 {
     /**
      * Creates an instance of the test subject.
@@ -20,7 +20,7 @@ class AbstractCollectionTest extends \Xpmock\TestCase
      */
     public function createInstance()
     {
-        $mock = $this->mock('Dhii\\Collection\\AbstractCollection')
+        $mock = $this->mock('Dhii\\Collection\\AbstractBulkRetrievableCollection')
                 ->new();
 
         $reflection = $this->reflect($mock);
@@ -38,22 +38,20 @@ class AbstractCollectionTest extends \Xpmock\TestCase
     {
         $subject = $this->createInstance();
 
-        $this->assertInstanceOf('Dhii\\Collection\\AbstractCollection', $subject, 'Subject instance is not valid');
+        $this->assertInstanceOf('Dhii\\Collection\\AbstractBulkRetrievableCollection', $subject, 'Subject instance is not valid');
     }
 
     /**
-     * Tests whether the subject will correctly determine existence of items.
+     * Tests whether the iterator will correctly retrieve its items.
      *
      * @since [*next-version*]
      */
-    public function testHasItem()
+    public function testItemRetrieval()
     {
         $subject = $this->createInstance();
         $reflection = $this->reflect($subject);
 
         $reflection->items = array('banana');
-        $this->assertTrue($reflection->_hasItem('banana'), 'Subject reported existance of non-existing item');
-        $this->assertFalse($reflection->_hasItem('orange'), 'Subject did not report existance of existing item');
-        
+        $this->assertEquals(array('banana'), $reflection->_getItems(), 'Subject reported wrong items');
     }
 }

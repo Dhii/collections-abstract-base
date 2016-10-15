@@ -5,11 +5,11 @@ namespace Dhii\Collection\FuncTest;
 use Dhii\Collection;
 
 /**
- * Tests {@see Collection\AbstractCollection}.
+ * Tests {@see Collection\AbstractCheckCapableCollection}.
  *
  * @since [*next-version*]
  */
-class AbstractCollectionTest extends \Xpmock\TestCase
+class AbstractCheckCapableCollectionTest extends \Xpmock\TestCase
 {
     /**
      * Creates an instance of the test subject.
@@ -20,7 +20,7 @@ class AbstractCollectionTest extends \Xpmock\TestCase
      */
     public function createInstance()
     {
-        $mock = $this->mock('Dhii\\Collection\\AbstractCollection')
+        $mock = $this->mock('Dhii\\Collection\\AbstractCheckCapableCollection')
                 ->new();
 
         $reflection = $this->reflect($mock);
@@ -38,22 +38,21 @@ class AbstractCollectionTest extends \Xpmock\TestCase
     {
         $subject = $this->createInstance();
 
-        $this->assertInstanceOf('Dhii\\Collection\\AbstractCollection', $subject, 'Subject instance is not valid');
+        $this->assertInstanceOf('Dhii\\Collection\\AbstractCheckCapableCollection', $subject, 'Subject instance is not valid');
     }
 
     /**
-     * Tests whether the subject will correctly determine existence of items.
+     * Tests whether the iterator will correctly determine the existence of items by key.
      *
      * @since [*next-version*]
      */
-    public function testHasItem()
+    public function testHasItemKey()
     {
         $subject = $this->createInstance();
         $reflection = $this->reflect($subject);
 
-        $reflection->items = array('banana');
-        $this->assertTrue($reflection->_hasItem('banana'), 'Subject reported existance of non-existing item');
-        $this->assertFalse($reflection->_hasItem('orange'), 'Subject did not report existance of existing item');
-        
+        $reflection->items = array('my_fruit' => 'banana');
+        $this->assertTrue($reflection->_hasItemKey('my_fruit'), 'Subject reported existance of non-existing key');
+        $this->assertFalse($reflection->_hasItemKey('other'), 'Subject did not report existance of existing key');
     }
 }
