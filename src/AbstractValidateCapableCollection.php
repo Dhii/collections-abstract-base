@@ -79,4 +79,40 @@ abstract class AbstractValidateCapableCollection extends AbstractCollection
 
         return true;
     }
+
+    /**
+     * Throws an exception if the given item list is not a valid list for this collection.
+     *
+     * This determines if this collection can operate by using the given list as item storage.
+     *
+     * @since [*next-version*]
+     *
+     * @param mixed[]|\Traversable $items The list of items to validate.
+     *
+     * @throws \Exception If list is invalid.
+     */
+    protected function _validateItemList($items)
+    {
+        // Nothing needs to happen if list is valid.
+    }
+
+    /**
+     * Determines if this collection can operate by using the given list as item storage.
+     *
+     * @since [*next-version*]
+     *
+     * @param mixed[]|\Traversable $items The list of items to validate.
+     *
+     * @return bool True if the list is valid; false otherwise.
+     */
+    protected function _isValidItemList($items)
+    {
+        try {
+            $this->_validateItemList($items);
+        } catch (\Exception $e) {
+            return false;
+        }
+
+        return true;
+    }
 }
