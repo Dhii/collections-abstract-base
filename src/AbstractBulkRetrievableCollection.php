@@ -9,10 +9,10 @@ namespace Dhii\Collection;
  * 
  * @since [*next-version*]
  */
-abstract class AbstractBulkRetrievableCollection extends AbstractCollection
+abstract class AbstractBulkRetrievableCollection extends AbstractValidateCapableCollection
 {
     protected $cachedItems;
-    
+
     /**
      * Low-level retrieval of all items.
      *
