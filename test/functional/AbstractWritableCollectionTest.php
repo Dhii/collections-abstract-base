@@ -46,7 +46,7 @@ class AbstractWritableCollectionTest extends \Xpmock\TestCase
      *
      * @since [*next-version*]
      */
-    public function testAdd()
+    public function testAddOne()
     {
         $subject = $this->createInstance();
         $reflection = $this->reflect($subject);
