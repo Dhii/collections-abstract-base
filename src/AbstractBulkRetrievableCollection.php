@@ -83,9 +83,9 @@ abstract class AbstractBulkRetrievableCollection extends AbstractCollection
      * @throws RuntimeException If list is not something that can have a value unset.
      *
      * @return array The array that resulted from the conversion.
-     *  If the argument is an array, returns unmodified.
-     *  If it is an {@see AbstractCollection} and not a {@see \Traversable}, gets its internal items and tries to convert those to array.
-     *  If it is a {@see \Traversable}, returns the result of {@see iterator_to_array()} on that.
+     *               If the argument is an array, returns unmodified.
+     *               If it is an {@see AbstractCollection} and not a {@see \Traversable}, gets its internal items and tries to convert those to array.
+     *               If it is a {@see \Traversable}, returns the result of {@see iterator_to_array()} on that.
      */
     protected function _arrayConvert(&$list)
     {
@@ -95,6 +95,7 @@ abstract class AbstractBulkRetrievableCollection extends AbstractCollection
 
         if ($list instanceof self && !($list instanceof BulkRetrievableCollectionInterface)) {
             $items = $list->getItems();
+
             return $this->_arrayConvert($items);
         }
 

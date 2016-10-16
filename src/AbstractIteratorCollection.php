@@ -11,10 +11,8 @@ namespace Dhii\Collection;
  */
 abstract class AbstractIteratorCollection extends AbstractIterableCollection
 {
-
     /**
      * @see SequentialIteratorInterface::getIterators()
-     *
      * @since [*next-version*]
      */
     protected function _getIterators()
@@ -36,7 +34,6 @@ abstract class AbstractIteratorCollection extends AbstractIterableCollection
 
     /**
      * @see SequentialIteratorInterface::getInnerIterator()
-     *
      * @since [*next-version*]
      */
     protected function _getInnerIterator()
@@ -45,7 +42,7 @@ abstract class AbstractIteratorCollection extends AbstractIterableCollection
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      *
      * @since [*next-version*]
      */
@@ -55,7 +52,7 @@ abstract class AbstractIteratorCollection extends AbstractIterableCollection
             throw $this->_createRuntimeException(sprintf('Not a valid iterator group item'));
         }
     }
-    
+
     protected function _nextInnerItem()
     {
         // Advance in the current iterator
@@ -72,23 +69,23 @@ abstract class AbstractIteratorCollection extends AbstractIterableCollection
             $iterator->rewind();
         }
     }
-    
+
     protected function _currentInnerItem()
     {
         $iterator = $this->_current();
-        
+
         return $iterator->current();
     }
-    
+
     protected function _validInnerItem()
     {
         return parent::valid() && $this->_current()->valid();
     }
-    
+
     protected function _keyInnerItem()
     {
         $iterator = $this->_current();
-        
+
         return $iterator->key();
     }
 }

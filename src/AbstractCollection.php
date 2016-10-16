@@ -12,7 +12,7 @@ namespace Dhii\Collection;
 class AbstractCollection extends AbstractClearableCollection
 {
     protected $items;
-    
+
     /**
      * Parameter-less constructor.
      *
@@ -24,9 +24,9 @@ class AbstractCollection extends AbstractClearableCollection
     {
         $this->_resetItems();
     }
-    
+
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      * 
      * @since [*next-version*]
      */
@@ -34,7 +34,7 @@ class AbstractCollection extends AbstractClearableCollection
     {
         return $this->items;
     }
-    
+
     /**
      * Retrieves unmodified internal items, by value.
      * 
@@ -51,7 +51,6 @@ class AbstractCollection extends AbstractClearableCollection
      * Checks whether the given item exists in this collection.
      * 
      * @see CollectionInterface::contains()
-     *
      * @since [*next-version*]
      *
      * @param mixed $item The item to check for.
@@ -132,14 +131,14 @@ class AbstractCollection extends AbstractClearableCollection
 
         throw $this->_createRuntimeException('Could not search list: the list is not something that can be searched');
     }
-    
+
     /**
      * Creates a new runtime exception.
      * 
      * @since [*next-version*]
      * 
-     * @param string $message The message of the exception.
-     * @param int $code The exception code.
+     * @param string     $message  The message of the exception.
+     * @param int        $code     The exception code.
      * @param \Exception $previous A previous exception, if any.
      * 
      * @return \RuntimeException
@@ -148,14 +147,14 @@ class AbstractCollection extends AbstractClearableCollection
     {
         return new \RuntimeException($message, $code, $previous);
     }
-    
+
     /**
      * Creates a new unexpected value exception.
      * 
      * @since [*next-version*]
      * 
-     * @param string $message The message of the exception.
-     * @param int $code The exception code.
+     * @param string     $message  The message of the exception.
+     * @param int        $code     The exception code.
      * @param \Exception $previous A previous exception, if any.
      * 
      * @return \UnexpectedValueException

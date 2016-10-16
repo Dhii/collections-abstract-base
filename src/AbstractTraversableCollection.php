@@ -2,9 +2,6 @@
 
 namespace Dhii\Collection;
 
-use RuntimeException;
-use UnexpectedValueException;
-
 /**
  * Common functionality for collections that can be iterated over in a foreach loop.
  * 
@@ -56,7 +53,7 @@ abstract class AbstractTraversableCollection extends AbstractCheckCapableCollect
     {
         $this->_arrayRewind($this->_getCachedItems());
     }
-    
+
     /**
      * Determines whether or not the current item is valid.
      * 

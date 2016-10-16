@@ -23,6 +23,7 @@ abstract class AbstractCheckCapableCollection extends AbstractCountableCollectio
     protected function _hasItemKey($key)
     {
         $items = $this->_getItems();
+
         return $this->_arrayKeyExists($items, $key);
     }
 

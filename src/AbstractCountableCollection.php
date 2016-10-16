@@ -21,9 +21,10 @@ abstract class AbstractCountableCollection extends AbstractBulkRetrievableCollec
     protected function _count()
     {
         $items = $this->_getCachedItems();
+
         return $this->_arrayCount($items);
     }
-    
+
     /**
      * Get the amount of all elements in the given list.
      *

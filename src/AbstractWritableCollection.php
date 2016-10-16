@@ -16,7 +16,6 @@ abstract class AbstractWritableCollection extends AbstractReadableCollection
      * The consumer is responsible for clearning the cache afterwards.
      * 
      * @see _clearItemCache()
-     *
      * @since [*next-version*]
      *
      * @param array|\Traversable $items Items to add.
@@ -38,7 +37,6 @@ abstract class AbstractWritableCollection extends AbstractReadableCollection
      * The consumer is responsible for clearning the cache afterwards.
      * 
      * @see _clearItemCache()
-     *
      * @since [*next-version*]
      *
      * @param mixed $item The item to add.
@@ -57,7 +55,6 @@ abstract class AbstractWritableCollection extends AbstractReadableCollection
      * The consumer is responsible for clearning the cache afterwards.
      * 
      * @see _clearItemCache()
-     *
      * @since [*next-version*]
      *
      * @param string $key  The key, at which to set the item
@@ -77,7 +74,6 @@ abstract class AbstractWritableCollection extends AbstractReadableCollection
      * The consumer is responsible for clearning the cache afterwards.
      * 
      * @see _clearItemCache()
-     *
      * @since [*next-version*]
      *
      * @param array|\Traversable $items The item list to set.
@@ -111,7 +107,7 @@ abstract class AbstractWritableCollection extends AbstractReadableCollection
     {
         return $this->_generateUniqueKey($item);
     }
-    
+
     /**
      * Generates a key that is guaranteed to be collection-wide unique.
      * 
@@ -144,7 +140,7 @@ abstract class AbstractWritableCollection extends AbstractReadableCollection
     {
         $hash = $this->_hash(uniqid('', true));
         $hash = substr($hash, 0, $length);
-        
+
         return $hash;
     }
 

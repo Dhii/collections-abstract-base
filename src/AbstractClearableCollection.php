@@ -24,14 +24,13 @@ abstract class AbstractClearableCollection extends AbstractHasher
      * Clears all items stored in this instance.
      * 
      * @see ClearableCollectionInterface::clear()
-     * 
      * @since [*next-version*]
      */
     protected function _clearItems()
     {
         $this->_resetItems();
     }
-    
+
     /**
      * Resets the items storage to its initial state.
      * 
