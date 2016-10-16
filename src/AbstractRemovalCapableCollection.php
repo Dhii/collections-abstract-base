@@ -30,6 +30,25 @@ class AbstractRemovalCapableCollection extends AbstractWritableCollection
     }
 
     /**
+     * Remove given items from this collection.
+     *
+     * @since [*next-version*]
+     *
+     * @param mixed[]|\Traversable $items
+     *
+     * @return bool False if at least one of the items could not be removed; true otherwise.
+     */
+    protected function _removeMany($items)
+    {
+        $isSuccess = true;
+        foreach ($items as $_item) {
+            $isSuccess = $this->_removeItem($_item) && $isSuccess;
+        }
+
+        return $isSuccess;
+    }
+
+    /**
      * Unset the specified key in the given list.
      *
      * @since [*next-version*]
