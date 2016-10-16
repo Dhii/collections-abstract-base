@@ -4,9 +4,9 @@ namespace Dhii\Collection;
 
 /**
  * Basic common functionality for collections.
- * 
+ *
  * Provides functionality necessary for implementation of {@see WritableCollectionInterface}.
- * 
+ *
  * @since [*next-version*]
  */
 abstract class AbstractWritableCollection extends AbstractReadableCollection
@@ -14,7 +14,7 @@ abstract class AbstractWritableCollection extends AbstractReadableCollection
     /**
      * Adds items to the collection.
      * The consumer is responsible for clearning the cache afterwards.
-     * 
+     *
      * @see _clearItemCache()
      * @since [*next-version*]
      *
@@ -35,7 +35,7 @@ abstract class AbstractWritableCollection extends AbstractReadableCollection
     /**
      * Add an item to the collection.
      * The consumer is responsible for clearning the cache afterwards.
-     * 
+     *
      * @see _clearItemCache()
      * @since [*next-version*]
      *
@@ -53,7 +53,7 @@ abstract class AbstractWritableCollection extends AbstractReadableCollection
     /**
      * Sets an item at the specified key in this collection.
      * The consumer is responsible for clearning the cache afterwards.
-     * 
+     *
      * @see _clearItemCache()
      * @since [*next-version*]
      *
@@ -72,7 +72,7 @@ abstract class AbstractWritableCollection extends AbstractReadableCollection
      *
      * The internal list will be replaced with the one given.
      * The consumer is responsible for clearning the cache afterwards.
-     * 
+     *
      * @see _clearItemCache()
      * @since [*next-version*]
      *
@@ -93,10 +93,10 @@ abstract class AbstractWritableCollection extends AbstractReadableCollection
      * Get a collection-wide unique key for an item.
      *
      * Determines ultimately whether same items are allowed in collection.
-     * 
+     *
      * It is not guaranteed to be consistent, e.g. running this several
      * times on the same argument will likely produce different results.
-     * 
+     *
      * @since [*next-version*]
      *
      * @param mixed $item The item, for which to get the key.
@@ -110,28 +110,28 @@ abstract class AbstractWritableCollection extends AbstractReadableCollection
 
     /**
      * Generates a key that is guaranteed to be collection-wide unique.
-     * 
+     *
      * @since [*next-version*]
-     * 
+     *
      * @param mixed $item The item, for which to generated the key.
-     * 
+     *
      * @return string The unique key.
      */
     protected function _generateUniqueKey($item)
     {
-        $key = $this->_getItemKey($item);
+        $key       = $this->_getItemKey($item);
         $uniqueKey = $key;
-        
+
         while ($this->_hasItemKey($uniqueKey)) {
             $uniqueKey = implode('-', array($key, $this->_createRandomHash()));
         }
-        
+
         return $uniqueKey;
     }
-    
+
     /**
      * Generates a random number.
-     * 
+     *
      * @param int $length The length of the hash to return.
      *
      * @return string A random number of the specified length.
