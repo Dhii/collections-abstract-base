@@ -31,6 +31,11 @@ class AbstractValidateCapableCollectionTest extends \Xpmock\TestCase
                         throw new \Exception('Key must be a string');
                     }
                 })
+                ->_validateItemList(function($items) {
+                    if (!is_array($items)) {
+                        throw new \Exception('Item list must be an array');
+                    }
+                })
                 ->new();
 
         $reflection = $this->reflect($mock);
@@ -77,5 +82,19 @@ class AbstractValidateCapableCollectionTest extends \Xpmock\TestCase
 
         $this->assertTrue($reflection->_isValidKey('my_key'), 'Subject reported a valid key as invalid');
         $this->assertFalse($reflection->_isValidKey(123), 'Subject did not report an invalid key as invalid');
+    }
+
+    /**
+     * Tests whether the subject will correctly determine the validity of an item storage.
+     *
+     * @since [*next-version*]
+     */
+    public function testItemListValidation()
+    {
+        $subject = $this->createInstance();
+        $reflection = $this->reflect($subject);
+
+        $this->assertTrue($reflection->_isValidItemList(array()), 'Subject reported a valid item list as invalid');
+        $this->assertFalse($reflection->_isValidItemList(new \ArrayIterator(array())), 'Subject did not report an invalid item list as invalid');
     }
 }
