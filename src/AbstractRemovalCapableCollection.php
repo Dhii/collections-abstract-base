@@ -4,9 +4,9 @@ namespace Dhii\Collection;
 
 /**
  * Common functionality for collections that can have its items removed.
- * 
+ *
  * Provides functionality necessary for implementation of {@see RemovalCapableCollectionInterface}.
- * 
+ *
  * @since [*next-version*]
  */
 class AbstractRemovalCapableCollection extends AbstractWritableCollection
