@@ -16,7 +16,7 @@ class AbstractWritableCollectionTest extends \Xpmock\TestCase
      *
      * @since [*next-version*]
      *
-     * @return Collection\AbstractCollection The new test subject instance.
+     * @return Collection\AbstractWritableCollection The new test subject instance.
      */
     public function createInstance()
     {
