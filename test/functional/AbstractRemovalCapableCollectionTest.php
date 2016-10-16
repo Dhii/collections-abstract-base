@@ -42,7 +42,7 @@ class AbstractRemovalCapableCollectionTest extends \Xpmock\TestCase
     }
 
     /**
-     * Tests whether the subject will correctly determine existence of items.
+     * Tests whether the subject will correctly remove a single item.
      *
      * @since [*next-version*]
      */
