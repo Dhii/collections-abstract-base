@@ -80,17 +80,77 @@ class AbstractWritableCollectionTest extends \Xpmock\TestCase
         $this->assertContains($item2, $reflection->_getItems(), 'Subect does not report containing required item');
         $this->assertEquals(3, count($reflection->_getItems()), 'Subject does not report correct number of items');
         $this->assertEquals(2, count($reflection->_getCachedItems()), 'Subject does not report correct number of items');
-        
+
         // Clearing cache - should report third item now
         $reflection->_clearItemCache();
         $this->assertEquals(3, count($reflection->_getCachedItems()), 'Subject does not report correct number of items');
-        
+
         // Should occur twice
         $item1Occurrences = array_keys($reflection->_getItems(), $item1);
         $this->assertCount(2, $item1Occurrences, 'Item does not occur the correct number of times');
-        
+
         // Should occur once
         $item2Occurrences = array_keys($reflection->_getItems(), $item2);
         $this->assertCount(1, $item2Occurrences, 'Item does not occur the correct number of times');
+    }
+
+    /**
+     * Tests whether the subject will correctly add new items.
+     *
+     * @since [*next-version*]
+     */
+    public function testAddMany()
+    {
+        $subject = $this->createInstance();
+        $reflection = $this->reflect($subject);
+
+        // One set of items - all indicators consistent
+        $this->assertEmpty($reflection->items, 'Subject reported non-empty items after creation');
+        $items1 = array('banana', 'orange');
+        $reflection->_addItems($items1);
+        $this->assertCount(2, $reflection->items, 'Subject does not contain correct number of items');
+        $this->assertContains('banana', $reflection->_getItems(), 'Subect does not report containing required item');
+        $this->assertContains('orange', $reflection->_getItems(), 'Subect does not report containing required item');
+        $this->assertCount(2, $reflection->_getItems(), 'Subject does not report correct number of items');
+        $this->assertCount(2, $reflection->_getCachedItems(), 'Subject does not report correct number of items');
+
+        // Adding items but not clearing cache
+        $items2 = array('apple', 'pear');
+        $reflection->_addItems($items2);
+        $this->assertCount(4, $reflection->items, 'Subject does not contain correct number of items');
+        $this->assertContains('banana', $reflection->_getItems(), 'Subect does not report containing required item');
+        $this->assertContains('orange', $reflection->_getItems(), 'Subect does not report containing required item');
+        $this->assertContains('apple', $reflection->_getItems(), 'Subect does not report containing required item');
+        $this->assertContains('pear', $reflection->_getItems(), 'Subect does not report containing required item');
+        $this->assertCount(4, $reflection->items, 'Subject does not contain correct number of items');
+        $this->assertContains('banana', $reflection->_getItems(), 'Subect does not report containing required item');
+        $this->assertCount(4, $reflection->_getItems(), 'Subject does not report correct number of items');
+        $this->assertCount(2, $reflection->_getCachedItems(), 'Subject does not report correct number of items');
+
+        // Clearing cache - should report second set of items now
+        $reflection->_clearItemCache();
+        $this->assertCount(4, $reflection->_getCachedItems(), 'Subject does not report correct number of items');
+
+        // Adding same items again - should get added
+        $reflection->_addItems($items1);
+        $this->assertCount(6, $reflection->items, 'Subject does not contain correct number of items');
+        $this->assertCount(6, $reflection->_getItems(), 'Subject does not report correct number of items');
+        $this->assertCount(4, $reflection->_getCachedItems(), 'Subject does not report correct number of items');
+
+        // Clearing cache - should report third item now
+        $reflection->_clearItemCache();
+        $this->assertCount(6, $reflection->_getCachedItems(), 'Subject does not report correct number of items');
+
+        // Should occur twice
+        $item1_0Occurrences = array_keys($reflection->_getItems(), $items1[0]);
+        $this->assertCount(2, $item1_0Occurrences, 'Item does not occur the correct number of times');
+        $item1_1Occurrences = array_keys($reflection->_getItems(), $items1[1]);
+        $this->assertCount(2, $item1_1Occurrences, 'Item does not occur the correct number of times');
+
+        // Should occur once
+        $item2_0Occurrences = array_keys($reflection->_getItems(), $items2[0]);
+        $this->assertCount(1, $item2_0Occurrences, 'Item does not occur the correct number of times');
+        $item2_1Occurrences = array_keys($reflection->_getItems(), $items2[1]);
+        $this->assertCount(1, $item2_1Occurrences, 'Item does not occur the correct number of times');
     }
 }
