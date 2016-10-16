@@ -13,6 +13,7 @@ abstract class AbstractWritableCollection extends AbstractReadableCollection
 {
     /**
      * Adds items to the collection.
+     *
      * The consumer is responsible for clearning the cache afterwards.
      *
      * @see _clearItemCache()

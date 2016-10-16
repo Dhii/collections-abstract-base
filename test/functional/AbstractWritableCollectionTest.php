@@ -59,7 +59,7 @@ class AbstractWritableCollectionTest extends \Xpmock\TestCase
         $this->assertContains($item1, $reflection->_getItems(), 'Subect does not report containing required item');
         $this->assertEquals(1, count($reflection->_getItems()), 'Subject does not report correct number of items');
         $this->assertEquals(1, count($reflection->_getCachedItems()), 'Subject does not report correct number of items');
-        
+
         // Adding item but not clearing cache
         $item2 = 'apple';
         $reflection->_addItem($item2);
@@ -68,11 +68,11 @@ class AbstractWritableCollectionTest extends \Xpmock\TestCase
         $this->assertContains($item2, $reflection->_getItems(), 'Subect does not report containing required item');
         $this->assertEquals(2, count($reflection->_getItems()), 'Subject does not report correct number of items');
         $this->assertEquals(1, count($reflection->_getCachedItems()), 'Subject does not report correct number of items');
-        
+
         // Clearing cache - should report second item now
         $reflection->_clearItemCache();
         $this->assertEquals(2, count($reflection->_getCachedItems()), 'Subject does not report correct number of items');
-        
+
         // Adding same item again - should get added
         $reflection->_addItem($item1);
         $this->assertEquals(3, count($reflection->items), 'Subject does not contain correct number of items');
