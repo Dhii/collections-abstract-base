@@ -56,6 +56,22 @@ class AbstractRemovalCapableCollectionTest extends \Xpmock\TestCase
         $this->assertEquals($data, $reflection->_getItems(), 'Subject did not report correct items before removal');
         $reflection->_removeItem('banana');
         $this->assertEquals(array('orange'), array_values($reflection->_getItems()), 'Subject did not report correct items after removal');
-        
+    }
+
+    /**
+     * Tests whether the subject will correctly remove multiple items.
+     *
+     * @since [*next-version*]
+     */
+    public function testRemoveMany()
+    {
+        $subject = $this->createInstance();
+        $reflection = $this->reflect($subject);
+
+        $data = array('banana', 'orange', 'pineapple', 'pear');
+        $reflection->items = $data;
+        $this->assertEquals($data, $reflection->_getItems(), 'Subject did not report correct items before removal');
+        $reflection->_removeMany(array('banana', 'pineapple'));
+        $this->assertEquals(array('orange', 'pear'), array_values($reflection->_getItems()), 'Subject did not report correct items after removal');
     }
 }
