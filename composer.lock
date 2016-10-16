@@ -13,12 +13,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Dhii/collections-interface.git",
-                "reference": "49d8eea2be3269df18a4c27dfa60fc8e3880dce8"
+                "reference": "c9f295f5c589258217099fe000c5497568c2fdd4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Dhii/collections-interface/zipball/49d8eea2be3269df18a4c27dfa60fc8e3880dce8",
-                "reference": "49d8eea2be3269df18a4c27dfa60fc8e3880dce8",
+                "url": "https://api.github.com/repos/Dhii/collections-interface/zipball/c9f295f5c589258217099fe000c5497568c2fdd4",
+                "reference": "c9f295f5c589258217099fe000c5497568c2fdd4",
                 "shasum": ""
             },
             "require": {
@@ -46,7 +46,7 @@
                 }
             ],
             "description": "Interfaces for collections",
-            "time": "2016-10-15 16:36:46"
+            "time": "2016-10-16 15:57:23"
         }
     ],
     "packages-dev": [
