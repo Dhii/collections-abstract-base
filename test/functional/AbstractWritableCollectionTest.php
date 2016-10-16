@@ -21,6 +21,11 @@ class AbstractWritableCollectionTest extends \Xpmock\TestCase
     public function createInstance()
     {
         $mock = $this->mock('Dhii\\Collection\\AbstractWritableCollection')
+                ->_validateItem(function($item) {
+                    if (!is_scalar($item)) {
+                        throw new \RuntimeException('The value must be scalar');
+                    }
+                })
                 ->new();
 
         $reflection = $this->reflect($mock);
@@ -152,5 +157,22 @@ class AbstractWritableCollectionTest extends \Xpmock\TestCase
         $this->assertCount(1, $item2_0Occurrences, 'Item does not occur the correct number of times');
         $item2_1Occurrences = array_keys($reflection->_getItems(), $items2[1]);
         $this->assertCount(1, $item2_1Occurrences, 'Item does not occur the correct number of times');
+    }
+
+    /**
+     * Tests whether a single item will fail to get added due to being invalid.
+     *
+     * @expectedException Exception
+     * @expectedExceptionMessage must be scalar
+     *
+     * @since [*next-version*]
+     */
+    public function testAddOneValidationFails()
+    {
+        $subject = $this->createInstance();
+        $reflection = $this->reflect($subject);
+
+        $data = new \stdClass();
+        $reflection->_addItem($data);
     }
 }
