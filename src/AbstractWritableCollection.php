@@ -88,13 +88,17 @@ abstract class AbstractWritableCollection extends AbstractReadableCollection
      * @see _clearItemCache()
      * @since [*next-version*]
      *
-     * @param array|\Traversable $items The item list to set.
+     * @param array|\Traversable $items      The item list to set.
+     * @param bool               $isValidate Whether or not to validate the item list.
      *
      * @return AbstractCollection This instance.
      */
-    protected function _setItems($items)
+    protected function _setItems($items, $isValidate = true)
     {
-        $this->_validateItemList($items);
+        if ($isValidate) {
+            $this->_validateItemList($items);
+        }
+
         $currentItems = $this->_getItemStorage();
         $currentItems = $items;
 
