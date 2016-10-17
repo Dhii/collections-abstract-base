@@ -9,7 +9,7 @@ namespace Dhii\Collection;
  *
  * @since [*next-version*]
  */
-class AbstractRemovalCapableCollection extends AbstractWritableCollection
+abstract class AbstractRemovalCapableCollection extends AbstractWritableCollection
 {
     /**
      * Removes the given item from this collection.

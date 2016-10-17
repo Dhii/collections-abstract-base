@@ -9,7 +9,7 @@ namespace Dhii\Collection;
  * 
  * @since [*next-version*]
  */
-class AbstractReadableCollection extends AbstractTraversableCollection
+abstract class AbstractReadableCollection extends AbstractTraversableCollection
 {
     /**
      * Retrieve an item with the specified key from this collection.

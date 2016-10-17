@@ -7,7 +7,7 @@ namespace Dhii\Collection;
  *
  * @since [*next-version*]
  */
-class AbstractHasher
+abstract class AbstractHasher
 {
     /**
      * Creates a hash of any value.

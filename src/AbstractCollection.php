@@ -9,7 +9,7 @@ namespace Dhii\Collection;
  * 
  * @since [*next-version*]
  */
-class AbstractCollection extends AbstractClearableCollection
+abstract class AbstractCollection extends AbstractClearableCollection
 {
     protected $items;
 
