@@ -19,15 +19,15 @@ abstract class AbstractWritableCollection extends AbstractReadableCollection
      * @see _clearItemCache()
      * @since [*next-version*]
      *
-     * @param array|\Traversable $items Items to add.
+     * @param array|\Traversable $items      Items to add.
+     * @param bool               $isValidate Whether or not to validate each item that is being added.
      *
      * @return AbstractCollection This instance.
      */
-    protected function _addItems($items)
+    protected function _addItems($items, $isValidate = true)
     {
         foreach ($items as $_key => $_item) {
-            $this->_validateItem($_item);
-            $this->_addItem($_item);
+            $this->_addItem($_item, $isValidate);
         }
 
         return $this;
