@@ -99,7 +99,7 @@ abstract class AbstractWritableCollection extends AbstractReadableCollection
             $this->_validateItemList($items);
         }
 
-        $currentItems = $this->_getItemStorage();
+        $currentItems = &$this->_getItemStorage();
         $currentItems = $items;
 
         return $this;
