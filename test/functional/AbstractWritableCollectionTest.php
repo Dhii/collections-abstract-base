@@ -191,4 +191,37 @@ class AbstractWritableCollectionTest extends \Xpmock\TestCase
 
         $this->assertContains($data, $reflection->_getItems(), 'Invalid item did not get added despite validation override');
     }
+
+    /**
+     * Tests whether multiple items will fail to get added due to one of them being invalid.
+     *
+     * @expectedException Exception
+     * @expectedExceptionMessage must be scalar
+     *
+     * @since [*next-version*]
+     */
+    public function testAddManyValidationFails()
+    {
+        $subject = $this->createInstance();
+        $reflection = $this->reflect($subject);
+
+        $data = array('apple', new \stdClass(), 'orange');
+        $reflection->_addItems($data);
+    }
+
+    /**
+     * Tests whether all of the multiple items will still get added even though one of them is invalid.
+     *
+     * @since [*next-version*]
+     */
+    public function testAddManyValidationSkipped()
+    {
+        $subject = $this->createInstance();
+        $reflection = $this->reflect($subject);
+
+        $data = array('apple', new \stdClass(), 'orange');
+        $reflection->_addItems($data, false); // Note the 2nd argument
+
+        $this->assertArraySubset($data, array_values($reflection->_getItems()), 'All items including invalid did not get added despite validation override');
+    }
 }
