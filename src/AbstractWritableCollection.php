@@ -80,6 +80,24 @@ abstract class AbstractWritableCollection extends AbstractReadableCollection
     }
 
     /**
+     * Sets all items in a list at their respective keys.
+     *
+     * @param mixed[]|\Traversable $items      A list of items to set.
+     * @param bool                 $isValidate Whether or not to validate each item that is being set.
+     *
+     * @return bool True if all items successfully set; false if setting of at least one item failed.
+     */
+    protected function _setMultipleItems($items, $isValidate = true)
+    {
+        $isSuccess = true;
+        foreach ($items as $_key => $_item) {
+            $isSuccess = $this->_setItem($_key, $_item, $isValidate) && $isSuccess;
+        }
+
+        return $isSuccess;
+    }
+
+    /**
      * Set the internal items list.
      *
      * The internal list will be replaced with the one given.
