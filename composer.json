@@ -11,7 +11,6 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "dhii/collections-interface": "dev-wip/refactoring as dev-develop"
     },
     "require-dev": {
         "dhii/php-cs-fixer-config": "dev-php-5.3",

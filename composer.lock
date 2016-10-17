@@ -4,51 +4,9 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "3e4e086f202813cb0538dbb3deb35e63",
-    "content-hash": "1d41a4cc9cb01a111f3ab63b942e602e",
-    "packages": [
-        {
-            "name": "dhii/collections-interface",
-            "version": "dev-wip/refactoring",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Dhii/collections-interface.git",
-                "reference": "8e07f7b9c14a46ae97521d1f79588cdc01df6927"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Dhii/collections-interface/zipball/8e07f7b9c14a46ae97521d1f79588cdc01df6927",
-                "reference": "8e07f7b9c14a46ae97521d1f79588cdc01df6927",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^5.3 | ^7.0"
-            },
-            "require-dev": {
-                "codeclimate/php-test-reporter": "dev-master",
-                "dhii/php-cs-fixer-config": "dev-php-5.3",
-                "phpunit/phpunit": "^4.8"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Dhii\\Collection\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Dhii Team",
-                    "email": "development@dhii.co"
-                }
-            ],
-            "description": "Interfaces for collections",
-            "time": "2016-10-16 20:45:40"
-        }
-    ],
+    "hash": "95039156cee217ab6e4452e2ab28a529",
+    "content-hash": "af8adb069e0ee815c35a03c322c8e686",
+    "packages": [],
     "packages-dev": [
         {
             "name": "codeclimate/php-test-reporter",
@@ -2002,17 +1960,9 @@
             "time": "2016-09-02 01:57:56"
         }
     ],
-    "aliases": [
-        {
-            "alias": "dev-develop",
-            "alias_normalized": "dev-develop",
-            "version": "dev-wip/refactoring",
-            "package": "dhii/collections-interface"
-        }
-    ],
+    "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "dhii/collections-interface": 20,
         "dhii/php-cs-fixer-config": 20,
         "codeclimate/php-test-reporter": 20
     },
