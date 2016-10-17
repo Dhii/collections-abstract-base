@@ -175,4 +175,20 @@ class AbstractWritableCollectionTest extends \Xpmock\TestCase
         $data = new \stdClass();
         $reflection->_addItem($data);
     }
+
+    /**
+     * Tests whether a single invalid item will still get added even though invalid.
+     *
+     * @since [*next-version*]
+     */
+    public function testAddOneValidationSkipped()
+    {
+        $subject = $this->createInstance();
+        $reflection = $this->reflect($subject);
+
+        $data = new \stdClass();
+        $reflection->_addItem($data, false); // Note the 2nd argument
+
+        $this->assertContains($data, $reflection->_getItems(), 'Invalid item did not get added despite validation override');
+    }
 }
