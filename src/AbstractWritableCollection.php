@@ -40,12 +40,17 @@ abstract class AbstractWritableCollection extends AbstractReadableCollection
      * @see _clearItemCache()
      * @since [*next-version*]
      *
-     * @param mixed $item The item to add.
+     * @param mixed $item       The item to add.
+     * @param bool  $isValidate Whether or not to validate the item that is being added.
      *
      * @return bool True if item successfully added; false if adding failed.
      */
-    protected function _addItem($item)
+    protected function _addItem($item, $isValidate = true)
     {
+        if ($isValidate) {
+            $this->_validateItem($item);
+        }
+
         $key = $this->_getItemUniqueKey($item);
 
         return $this->_arraySet($this->_getItemStorage(), $item, $key);
