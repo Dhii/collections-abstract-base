@@ -65,7 +65,7 @@ abstract class AbstractIteratorCollection extends AbstractTraversableCollection
         // If next item is not valid, advance iterator
         $this->_next();
         // Rewind next iterator
-        if ($this->valid() && ($iterator = $this->_current()) instanceof \Iterable) {
+        if ($this->_valid() && ($iterator = $this->_current()) instanceof \Iterable) {
             $iterator->rewind();
         }
     }
@@ -79,7 +79,7 @@ abstract class AbstractIteratorCollection extends AbstractTraversableCollection
 
     protected function _validInnerItem()
     {
-        return parent::valid() && $this->_current()->valid();
+        return $this->_valid() && $this->_current()->valid();
     }
 
     protected function _keyInnerItem()
