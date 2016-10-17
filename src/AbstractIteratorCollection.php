@@ -9,7 +9,7 @@ namespace Dhii\Collection;
  *
  * @since [*next-version*]
  */
-abstract class AbstractIteratorCollection extends AbstractIterableCollection
+abstract class AbstractIteratorCollection extends AbstractTraversableCollection
 {
     /**
      * @see SequentialIteratorInterface::getIterators()
