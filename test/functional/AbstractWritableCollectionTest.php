@@ -224,4 +224,32 @@ class AbstractWritableCollectionTest extends \Xpmock\TestCase
 
         $this->assertArraySubset($data, array_values($reflection->_getItems()), 'All items including invalid did not get added despite validation override');
     }
+
+    /**
+     * Tests whether a single and multiple items can be set directly at specified keys, and that the item set can be replaced.
+     *
+     * @since [*next-version*]
+     */
+    public function testSetItems()
+    {
+        $subject = $this->createInstance();
+        $reflection = $this->reflect($subject);
+
+        $data = array('apple', 'orange');
+        $this->assertEmpty($reflection->_getItems(), 'Item set not empty initially');
+        $reflection->_setItems($data);
+        $this->assertEquals($data, $reflection->_getItems(), 'Item set incorrect after setting multiple items');
+
+        $reflection->_setItem(1, 'pineapple');
+        $this->assertCount(2, $reflection->_getItems(), 'Count not same after setting item with same key');
+        $this->assertEquals(array('apple', 'pineapple'), $reflection->_getItems(), 'Resulting item set incorrect after setting single item');
+
+        $data2 = array(1 => 'one', 2 => 'two');
+        $reflection->_setMultipleItems($data2);
+        $this->assertEquals(array(0 => 'apple', 1 => 'one', 2 => 'two'), $reflection->_getItems(), 'Item set incorrect after setting multiple items');
+
+        $data3 = array('qwerty');
+        $reflection->_setItems($data3);
+        $this->assertEquals($data3, $reflection->_getItems(), 'Item set incorrect after replacing item set');
+    }
 }
