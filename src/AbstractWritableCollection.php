@@ -63,13 +63,19 @@ abstract class AbstractWritableCollection extends AbstractReadableCollection
      * @see _clearItemCache()
      * @since [*next-version*]
      *
-     * @param string $key  The key, at which to set the item
-     * @param mixed  $item The item to set.
+     * @param string $key        The key, at which to set the item
+     * @param mixed  $item       The item to set.
+     * @param bool   $isValidate Whether or not to validate the item that is being set.
      *
      * @return bool True if item successfully set; false if setting failed.
      */
-    protected function _setItem($key, $item)
+    protected function _setItem($key, $item, $isValidate = true)
     {
+        if ($isValidate) {
+            $this->_validateKey($key);
+            $this->_validateItem($item);
+        }
+
         return $this->_arraySet($this->_getItemStorage(), $item, $key);
     }
 
