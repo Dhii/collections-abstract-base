@@ -11,7 +11,7 @@ use UnexpectedValueException;
  * Caches items on rewind, allowing convenient auto-generation of items,
  * while still having performance in the loop.
  *
- * @since [*next-version*]
+ * @since 0.1.0
  */
 abstract class AbstractIterableCollection extends AbstractCollection implements \Iterator
 {
@@ -21,7 +21,7 @@ abstract class AbstractIterableCollection extends AbstractCollection implements 
     /**
      * {@inheritdoc}
      *
-     * @since [*next-version*]
+     * @since 0.1.0
      */
     public function current()
     {
@@ -31,7 +31,7 @@ abstract class AbstractIterableCollection extends AbstractCollection implements 
     /**
      * Retrieves the current element in the iteration.
      *
-     * @since [*next-version*]
+     * @since 0.1.0
      */
     protected function _current()
     {
@@ -41,7 +41,7 @@ abstract class AbstractIterableCollection extends AbstractCollection implements 
     /**
      * {@inheritdoc}
      *
-     * @since [*next-version*]
+     * @since 0.1.0
      */
     public function key()
     {
@@ -51,7 +51,7 @@ abstract class AbstractIterableCollection extends AbstractCollection implements 
     /**
      * Retrieves the key of the current element in the iteration.
      *
-     * @since [*next-version*]
+     * @since 0.1.0
      */
     protected function _key()
     {
@@ -61,7 +61,7 @@ abstract class AbstractIterableCollection extends AbstractCollection implements 
     /**
      * {@inheritdoc}
      *
-     * @since [*next-version*]
+     * @since 0.1.0
      */
     public function next()
     {
@@ -71,7 +71,7 @@ abstract class AbstractIterableCollection extends AbstractCollection implements 
     /**
      * Advances the internal iteration pointer forward.
      *
-     * @since [*next-version*]
+     * @since 0.1.0
      */
     protected function _next()
     {
@@ -81,7 +81,7 @@ abstract class AbstractIterableCollection extends AbstractCollection implements 
     /**
      * {@inheritdoc}
      *
-     * @since [*next-version*]
+     * @since 0.1.0
      */
     public function rewind()
     {
@@ -91,7 +91,7 @@ abstract class AbstractIterableCollection extends AbstractCollection implements 
     /**
      * Returns the internal iteration pointer to the beginning.
      *
-     * @since [*next-version*]
+     * @since 0.1.0
      */
     protected function _rewind()
     {
@@ -101,7 +101,7 @@ abstract class AbstractIterableCollection extends AbstractCollection implements 
     /**
      * {@inheritdoc}
      *
-     * @since [*next-version*]
+     * @since 0.1.0
      */
     public function valid()
     {
@@ -118,7 +118,7 @@ abstract class AbstractIterableCollection extends AbstractCollection implements 
      *
      * If no items are cached, populates the cache first.
      *
-     * @since [*next-version*]
+     * @since 0.1.0
      *
      * @return array The array of items.
      */
@@ -135,7 +135,7 @@ abstract class AbstractIterableCollection extends AbstractCollection implements 
     /**
      * Retrieves items that are prepared to be cached and worked with.
      *
-     * @since [*next-version*]
+     * @since 0.1.0
      *
      * @return array The array of prepared items.
      */
@@ -149,7 +149,7 @@ abstract class AbstractIterableCollection extends AbstractCollection implements 
     /**
      * Clears and resents the iterable item cache.
      *
-     * @since [*next-version*]
+     * @since 0.1.0
      *
      * @return AbstractIterableCollection This instance.
      */
@@ -163,7 +163,7 @@ abstract class AbstractIterableCollection extends AbstractCollection implements 
     /**
      * Retrieve the current element from a list.
      *
-     * @since [*next-version*]
+     * @since 0.1.0
      *
      * @param array|\Traversable $array The list to get the current element of.
      *
@@ -179,7 +179,7 @@ abstract class AbstractIterableCollection extends AbstractCollection implements 
     /**
      * Retrieve the current key from a list.
      *
-     * @since [*next-version*]
+     * @since 0.1.0
      *
      * @param array|\Traversable $array The list to get the current key of.
      *
@@ -195,7 +195,7 @@ abstract class AbstractIterableCollection extends AbstractCollection implements 
     /**
      * Move the pointer of the list to the beginning.
      *
-     * @since [*next-version*]
+     * @since 0.1.0
      *
      * @param array|\Traversable $array The list to rewind.
      *
@@ -211,7 +211,7 @@ abstract class AbstractIterableCollection extends AbstractCollection implements 
     /**
      * Move the pointer of the list forward and return the element there.
      *
-     * @since [*next-version*]
+     * @since 0.1.0
      *
      * @param array|\Traversable $array The list to move the pointer of.
      *
@@ -227,7 +227,7 @@ abstract class AbstractIterableCollection extends AbstractCollection implements 
     /**
      * Get the amount of all elements in the given list.
      *
-     * @since [*next-version*]
+     * @since 0.1.0
      *
      * @param array|\Countable|\Traversable $array The list to get the count of
      *
@@ -265,7 +265,7 @@ abstract class AbstractIterableCollection extends AbstractCollection implements 
      * If this is an {@see \IteratorAggregate}, return its inner-most iterator, recursively.
      *
      *
-     * @since [*next-version*]
+     * @since 0.1.0
      *
      * @param \Traversable $iterator An iterator.
      *

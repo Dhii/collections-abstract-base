@@ -5,14 +5,14 @@ namespace Dhii\Collection;
 /**
  * Generic functionality for hashing.
  *
- * @since [*next-version*]
+ * @since 0.1.0
  */
 class AbstractHasher
 {
     /**
      * Creates a hash of any value.
      *
-     * @since [*next-version*]
+     * @since 0.1.0
      * @see _hashScalar()
      * @see _hashNonScalar()
      *
@@ -30,7 +30,7 @@ class AbstractHasher
     /**
      * Creates a hash of a scalar value.
      *
-     * @since [*next-version*]
+     * @since 0.1.0
      * @see sha1()
      *
      * @param int|float|string $value The scalar value to hash.
@@ -45,7 +45,7 @@ class AbstractHasher
     /**
      * Creates a hash of a non-scalar value.
      *
-     * @since [*next-version*]
+     * @since 0.1.0
      *
      * @param object|array $value The non-scalar value to hash.
      *
