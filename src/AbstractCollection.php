@@ -11,7 +11,7 @@ use UnexpectedValueException;
  *
  * This implementation permits the same value to appear multiple times.
  *
- * @since [*next-version*]
+ * @since 0.1.0
  */
 abstract class AbstractCollection extends AbstractHasher implements CollectionInterface
 {
@@ -22,7 +22,7 @@ abstract class AbstractCollection extends AbstractHasher implements CollectionIn
      *
      * The actual constructor MUST call this method.
      *
-     * @since [*next-version*]
+     * @since 0.1.0
      */
     protected function _construct()
     {
@@ -32,7 +32,7 @@ abstract class AbstractCollection extends AbstractHasher implements CollectionIn
     /**
      * {@inheritdoc}
      *
-     * @since [*next-version*]
+     * @since 0.1.0
      */
     public function getItems()
     {
@@ -42,7 +42,7 @@ abstract class AbstractCollection extends AbstractHasher implements CollectionIn
     /**
      * Low-level retrieval of all items.
      *
-     * @since [*next-version*]
+     * @since 0.1.0
      *
      * @return mixed[]|\Traversable
      */
@@ -54,7 +54,7 @@ abstract class AbstractCollection extends AbstractHasher implements CollectionIn
     /**
      * Adds items to the collection.
      *
-     * @since [*next-version*]
+     * @since 0.1.0
      *
      * @param array|\Traversable $items Items to add.
      *
@@ -73,7 +73,7 @@ abstract class AbstractCollection extends AbstractHasher implements CollectionIn
     /**
      * Add an item to the collection.
      *
-     * @since [*next-version*]
+     * @since 0.1.0
      *
      * @param mixed $item The item to add.
      *
@@ -89,7 +89,7 @@ abstract class AbstractCollection extends AbstractHasher implements CollectionIn
     /**
      * Sets an item at the specified key in this collection.
      *
-     * @since [*next-version*]
+     * @since 0.1.0
      *
      * @param string $key  The key, at which to set the item
      * @param mixed  $item The item to set.
@@ -106,7 +106,7 @@ abstract class AbstractCollection extends AbstractHasher implements CollectionIn
      *
      * The internal list will be replaced with the one given.
      *
-     * @since [*next-version*]
+     * @since 0.1.0
      *
      * @param array|\Traversable $items The item list to set.
      *
@@ -123,7 +123,7 @@ abstract class AbstractCollection extends AbstractHasher implements CollectionIn
     /**
      * Removes the given item from this collection.
      *
-     * @since [*next-version*]
+     * @since 0.1.0
      *
      * @param mixed $item The item to remove.
      *
@@ -141,7 +141,7 @@ abstract class AbstractCollection extends AbstractHasher implements CollectionIn
     /**
      * Checks whether the given item exists in this collection.
      *
-     * @since [*next-version*]
+     * @since 0.1.0
      *
      * @param mixed $item The item to check for.
      *
@@ -155,7 +155,7 @@ abstract class AbstractCollection extends AbstractHasher implements CollectionIn
     /**
      * Checks whether an item with the specified key exists in this collection.
      *
-     * @since [*next-version*]
+     * @since 0.1.0
      *
      * @param int|string $key The key to check for.
      *
@@ -169,7 +169,7 @@ abstract class AbstractCollection extends AbstractHasher implements CollectionIn
     /**
      * Retrieve an item with the specified key from this collection.
      *
-     * @since [*next-version*]
+     * @since 0.1.0
      *
      * @param string|int $key     The key to get an item for.
      * @param mixed      $default The value to return if the specified key does not exists.
@@ -184,7 +184,7 @@ abstract class AbstractCollection extends AbstractHasher implements CollectionIn
     /**
      * Get the key of an item to use for consistency checks.
      *
-     * @since [*next-version*]
+     * @since 0.1.0
      *
      * @param mixed $item Get the key of an item.
      *
@@ -198,7 +198,7 @@ abstract class AbstractCollection extends AbstractHasher implements CollectionIn
     /**
      * Get the index, at which an item exists in this collection.
      *
-     * @since [*next-version*]
+     * @since 0.1.0
      *
      * @param mixed $item   The item to find.
      * @param bool  $strict Whether or not the type must also match.
@@ -229,7 +229,7 @@ abstract class AbstractCollection extends AbstractHasher implements CollectionIn
     /**
      * Search a list for a value.
      *
-     * @since [*next-version*]
+     * @since 0.1.0
      *
      * @param AbstractCollection|array|\Traversable $array  The list to search.
      * @param mixed                                 $value  The value to search for.
@@ -269,7 +269,7 @@ abstract class AbstractCollection extends AbstractHasher implements CollectionIn
     /**
      * Checks if an item with the specified key exists in a list.
      *
-     * @since [*next-version*]
+     * @since 0.1.0
      *
      * @param array|\ArrayAccess|AccessibleCollectionInterface $list The list to check.
      * @param string|int                                       $key  The key to check for.
@@ -299,7 +299,7 @@ abstract class AbstractCollection extends AbstractHasher implements CollectionIn
     /**
      * Retrieves an item with the specified key from the given list.
      *
-     * @since [*next-version*]
+     * @since 0.1.0
      *
      * @param array|\ArrayAccess|AccessibleCollectionInterface $list The list to retrieve from.
      * @param string|int                                       $key  The key to retrieve the item for.
@@ -335,7 +335,7 @@ abstract class AbstractCollection extends AbstractHasher implements CollectionIn
     /**
      * Set an item at the specified key in the given list.
      *
-     * @since [*next-version*]
+     * @since 0.1.0
      *
      * @param mixed[]|\ArrayAccess|MutableCollectionInterface $list The list, for which to set the value.
      * @param mixed                                           $item The item to set for the specified key.
@@ -370,7 +370,7 @@ abstract class AbstractCollection extends AbstractHasher implements CollectionIn
     /**
      * Unset the specified key in the given list.
      *
-     * @since [*next-version*]
+     * @since 0.1.0
      *
      * @param mixed[]|\ArrayAccess|MutableCollectionInterface $list The list, for which to set the value.
      * @param string                                          $key  The key, for which to unset the item.
@@ -412,7 +412,7 @@ abstract class AbstractCollection extends AbstractHasher implements CollectionIn
     /**
      * Normalize an array-ish value to array.
      *
-     * @since [*next-version*]
+     * @since 0.1.0
      *
      * @param array|AbstractCollection|\Traversable $list The list, which to convert.
      *
@@ -445,7 +445,7 @@ abstract class AbstractCollection extends AbstractHasher implements CollectionIn
     /**
      * Determines if item is a valid member of the collection.
      *
-     * @since [*next-version*]
+     * @since 0.1.0
      *
      * @throws \Exception If the item is invalid;
      */
@@ -454,7 +454,7 @@ abstract class AbstractCollection extends AbstractHasher implements CollectionIn
     /**
      * Determines if item is a valid member of the collection.
      *
-     * @since [*next-version*]
+     * @since 0.1.0
      *
      * @param mixed $item The item to evaluate.
      *
@@ -474,7 +474,7 @@ abstract class AbstractCollection extends AbstractHasher implements CollectionIn
     /**
      * Throws an exception if the given value is not a valid item list.
      *
-     * @since [*next-version*]
+     * @since 0.1.0
      *
      * @param mixed $items An item list.
      *
