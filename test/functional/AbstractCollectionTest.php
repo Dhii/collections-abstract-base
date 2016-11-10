@@ -5,14 +5,14 @@ namespace Dhii\Collection\FuncTest\AbstractCollectionTest;
 /**
  * Tests {@see \Dhii\Collection\AbstractCollection}.
  *
- * @since [*next-version*]
+ * @since 0.1.0
  */
 class AbstractCollectionTest extends \Xpmock\TestCase
 {
     /**
      * Creates a new instance of the subject.
      *
-     * @since [*next-version*]
+     * @since 0.1.0
      *
      * @return \Dhii\Collection\AbstractCollection The new instance of the subject.
      */
@@ -31,7 +31,7 @@ class AbstractCollectionTest extends \Xpmock\TestCase
     /**
      * Tests whether a valid instance of the test subject can be created.
      *
-     * @since [*next-version*]
+     * @since 0.1.0
      */
     public function testCanBeCreated()
     {
@@ -43,7 +43,7 @@ class AbstractCollectionTest extends \Xpmock\TestCase
     /**
      * Tests whether the collection reports added items correctly.
      *
-     * @since [*next-version*]
+     * @since 0.1.0
      */
     public function testCanAdd()
     {
@@ -65,7 +65,7 @@ class AbstractCollectionTest extends \Xpmock\TestCase
     /**
      * Tests whether the collection reports set items correctly.
      *
-     * @since [*next-version*]
+     * @since 0.1.0
      */
     public function testCanSet()
     {

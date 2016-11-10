@@ -5,14 +5,14 @@ namespace Dhii\Collection\FuncTest;
 /**
  * Tests {@see Dhii\Collection\AbstractHasher}.
  *
- * @since [*next-version*]
+ * @since 0.1.0
  */
 class AbstractHasherTest extends \Xpmock\TestCase
 {
     /**
      * Creates a new instance of the test subject.
      *
-     * @since [*next-version*]
+     * @since 0.1.0
      *
      * @return Dhii\Collection\AbstractHasher
      */
@@ -27,7 +27,7 @@ class AbstractHasherTest extends \Xpmock\TestCase
     /**
      * Tests whether a correct instance of a descendant can be created.
      *
-     * @since [*next-version*]
+     * @since 0.1.0
      */
     public function testCanBeCreated()
     {
@@ -39,7 +39,7 @@ class AbstractHasherTest extends \Xpmock\TestCase
     /**
      * Tests whether or not hashing is done right.
      *
-     * @since [*next-version*]
+     * @since 0.1.0
      */
     public function testHashing()
     {

@@ -5,14 +5,14 @@ namespace Dhii\Collection\FuncTest;
 /**
  * Tests {@see Dhii\Collection\AbstractIterableCollection}.
  *
- * @since [*next-version*]
+ * @since 0.1.0
  */
 class AbstractIterableCollectionTest extends \Xpmock\TestCase
 {
     /**
      * Creates a new instance of the test subject.
      *
-     * @since [*next-version*]
+     * @since 0.1.0
      *
      * @return Dhii\Collection\AbstractHasher
      */
@@ -28,7 +28,7 @@ class AbstractIterableCollectionTest extends \Xpmock\TestCase
     /**
      * Tests whether a correct instance of a descendant can be created.
      *
-     * @since [*next-version*]
+     * @since 0.1.0
      */
     public function testCanBeCreated()
     {
@@ -42,7 +42,7 @@ class AbstractIterableCollectionTest extends \Xpmock\TestCase
     /**
      * Tests whether or not this collection is actually iterable.
      *
-     * @since [*next-version*]
+     * @since 0.1.0
      */
     public function testIsIterable()
     {
@@ -67,7 +67,7 @@ class AbstractIterableCollectionTest extends \Xpmock\TestCase
      * Tests whether or not this collection is actually iterable when the
      * items are a {@see \Traversable} internally.
      *
-     * @since [*next-version*]
+     * @since 0.1.0
      */
     public function testIsIterableTraversable()
     {
@@ -91,7 +91,7 @@ class AbstractIterableCollectionTest extends \Xpmock\TestCase
     /**
      * Tests whether or not this collection can count its items.
      *
-     * @since [*next-version*]
+     * @since 0.1.0
      */
     public function testIsCountable()
     {
@@ -112,7 +112,7 @@ class AbstractIterableCollectionTest extends \Xpmock\TestCase
      * Tests whether or not this collection can count its items when they are
      * a {@see \Traversable} internally.
      *
-     * @since [*next-version*]
+     * @since 0.1.0
      */
     public function testIsCountableTraversable()
     {
